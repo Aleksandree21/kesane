@@ -1,0 +1,21 @@
+<svg width="420" height="320" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="320" rx="44" fill="#FFF0F7"/>
+  <g filter="url(#shadow)">
+    <rect x="76" y="66" width="268" height="188" rx="28" fill="white"/>
+    <path d="M92 92L210 174L328 92" stroke="#FFD2E3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96 232L174 160" stroke="#FFD2E3" stroke-width="10" stroke-linecap="round"/>
+    <path d="M324 232L246 160" stroke="#FFD2E3" stroke-width="10" stroke-linecap="round"/>
+    <path d="M211 116C233 84 270 95 267 130C265 165 218 183 211 116Z" fill="#FF8FB8"/>
+    <path d="M211 116C189 84 152 95 155 130C157 165 204 183 211 116Z" fill="#FFB8D2"/>
+    <rect x="142" y="207" width="136" height="12" rx="6" fill="#D9C7FF"/>
+  </g>
+  <circle cx="72" cy="246" r="34" fill="#C9F4DE"/>
+  <circle cx="346" cy="76" r="32" fill="#FFF1B8"/>
+  <path d="M58 88H88M73 73V103" stroke="#C291FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M324 250H356M340 234V266" stroke="#FF8FB8" stroke-width="8" stroke-linecap="round"/>
+  <defs>
+    <filter id="shadow" x="45" y="46" width="330" height="250" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#95567D" flood-opacity="0.17"/>
+    </filter>
+  </defs>
+</svg>

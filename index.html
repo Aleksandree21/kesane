@@ -23,6 +23,7 @@
         </a>
         <div class="nav-links" aria-label="Page sections">
           <a href="#medicine">Medicine</a>
+          <a href="#gallery">Gallery</a>
           <a href="#tiny-friends">Tiny Friends</a>
           <a href="#swiftie">Swiftie</a>
           <a href="#love-notes">Love Notes</a>
@@ -50,6 +51,18 @@
           <div class="moon"></div>
           <div class="cloud cloud-one"></div>
           <div class="cloud cloud-two"></div>
+          <img
+            class="floating-picture picture-medicine"
+            src="assets/medicine-heart.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="floating-picture picture-music"
+            src="assets/music-cloud.svg"
+            alt=""
+            aria-hidden="true"
+          />
           <div class="sheep">
             <span class="sheep-fluff fluff-one"></span>
             <span class="sheep-fluff fluff-two"></span>
@@ -73,8 +86,8 @@
     </header>
 
     <main>
-      <section class="section intro-grid">
-        <article class="glass-card">
+      <section class="section intro-grid reveal">
+        <article class="glass-card twinkle-card">
           <span class="card-icon">Rx</span>
           <h2>Future healer energy</h2>
           <p>
@@ -83,7 +96,7 @@
             of superpower.
           </p>
         </article>
-        <article class="glass-card">
+        <article class="glass-card twinkle-card">
           <span class="card-icon">&#9825;</span>
           <h2>Soft little universe</h2>
           <p>
@@ -91,7 +104,7 @@
             sweetness to make any ordinary day feel like a gentle surprise.
           </p>
         </article>
-        <article class="glass-card">
+        <article class="glass-card twinkle-card">
           <span class="card-icon">13</span>
           <h2>Swiftie sparkle</h2>
           <p>
@@ -101,7 +114,54 @@
         </article>
       </section>
 
-      <section id="medicine" class="section split-section">
+      <section id="gallery" class="section gallery-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">A pocket-sized picture book</p>
+          <h2>More tiny pictures for her smile</h2>
+          <p>
+            A little illustrated gallery for the exact Kesane mood: medicine
+            dreams, sheep softness, puppy happiness, and music floating around
+            everything.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="picture-frame tilt-left">
+            <img src="assets/sheep-dream.svg" alt="A cute sheep resting under a heart" />
+            <div>
+              <span>01</span>
+              <h3>Sheep Dream</h3>
+              <p>A woolly cloud friend for every study break.</p>
+            </div>
+          </article>
+          <article class="picture-frame tilt-right">
+            <img src="assets/puppy-love.svg" alt="A happy puppy with a heart" />
+            <div>
+              <span>02</span>
+              <h3>Puppy Love</h3>
+              <p>Tail-wagging encouragement for her busiest days.</p>
+            </div>
+          </article>
+          <article class="picture-frame tilt-left">
+            <img src="assets/medicine-heart.svg" alt="A heart and stethoscope illustration" />
+            <div>
+              <span>03</span>
+              <h3>Doctor Heart</h3>
+              <p>Because her future is smart, brave, and kind.</p>
+            </div>
+          </article>
+          <article class="picture-frame tilt-right">
+            <img src="assets/music-cloud.svg" alt="A musical cloud with hearts" />
+            <div>
+              <span>04</span>
+              <h3>Soft Music Cloud</h3>
+              <p>A little Swiftie sparkle drifting through the sky.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="medicine" class="section split-section reveal">
         <div>
           <p class="eyebrow">Medicine faculty princess</p>
           <h2>For the girl learning how to save hearts</h2>
@@ -133,7 +193,22 @@
         </div>
       </section>
 
-      <section id="tiny-friends" class="section">
+      <section class="section postcard-section reveal">
+        <div class="postcard-card">
+          <img src="assets/love-postcard.svg" alt="A cute love postcard with a heart" />
+          <div>
+            <p class="eyebrow">Special delivery</p>
+            <h2>A tiny postcard from this website</h2>
+            <p>
+              Dear Kesane, this page requested more cuteness, more pictures, and
+              more sparkles. It is now trying very hard to become your favorite
+              tiny corner of the internet.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tiny-friends" class="section reveal">
         <div class="section-heading">
           <p class="eyebrow">Tiny friends department</p>
           <h2>Sheep clouds and puppy paws</h2>
@@ -167,7 +242,7 @@
         </div>
       </section>
 
-      <section id="swiftie" class="section eras-section">
+      <section id="swiftie" class="section eras-section reveal">
         <div class="section-heading">
           <p class="eyebrow">Kesane's eras</p>
           <h2>A little Taylor-inspired constellation</h2>
@@ -201,7 +276,7 @@
         </div>
       </section>
 
-      <section id="love-notes" class="section love-note-section">
+      <section id="love-notes" class="section love-note-section reveal">
         <div class="love-note-card">
           <p class="eyebrow">Tap for sweetness</p>
           <h2>Little love notes for Kesane</h2>

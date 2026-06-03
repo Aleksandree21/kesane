@@ -1,0 +1,24 @@
+<svg width="420" height="320" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="320" rx="44" fill="#FFF8EF"/>
+  <path d="M56 248C94 198 161 177 219 198C272 217 313 240 366 221V320H56V248Z" fill="#FFE3C6"/>
+  <circle cx="322" cy="72" r="38" fill="#C9F4DE"/>
+  <g filter="url(#shadow)">
+    <path d="M119 141C88 95 118 48 161 82L166 168L119 141Z" fill="#D9865D"/>
+    <path d="M301 141C332 95 302 48 259 82L254 168L301 141Z" fill="#D9865D"/>
+    <rect x="109" y="84" width="202" height="174" rx="86" fill="#FFD3A8"/>
+    <path d="M150 181C150 158 173 140 210 140C247 140 270 158 270 181C270 215 244 238 210 238C176 238 150 215 150 181Z" fill="#FFF3E8"/>
+    <circle cx="176" cy="158" r="9" fill="#4E3A3A"/>
+    <circle cx="244" cy="158" r="9" fill="#4E3A3A"/>
+    <path d="M204 181C207 177 213 177 216 181L212 189C211 192 209 192 208 189L204 181Z" fill="#4E3A3A"/>
+    <path d="M210 190V202" stroke="#4E3A3A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M190 207C199 217 221 217 230 207" stroke="#FF8FB8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <path d="M101 74C120 47 151 55 149 85C147 114 107 128 101 74Z" fill="#FF8FB8"/>
+  <path d="M101 74C82 47 51 55 53 85C55 114 95 128 101 74Z" fill="#FFB8D2"/>
+  <path d="M323 206C345 196 365 207 371 229" stroke="#FFC38F" stroke-width="18" stroke-linecap="round"/>
+  <defs>
+    <filter id="shadow" x="70" y="42" width="280" height="254" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#95567D" flood-opacity="0.17"/>
+    </filter>
+  </defs>
+</svg>

@@ -278,6 +278,29 @@ p {
   backdrop-filter: blur(12px);
 }
 
+.floating-picture {
+  position: absolute;
+  z-index: 2;
+  width: 116px;
+  border: 6px solid rgba(255, 255, 255, 0.82);
+  border-radius: 28px;
+  box-shadow: 0 18px 34px rgba(149, 86, 125, 0.2);
+  animation: floatSticker 5.6s ease-in-out infinite;
+}
+
+.picture-medicine {
+  top: 178px;
+  left: 34px;
+  transform: rotate(-10deg);
+}
+
+.picture-music {
+  right: 38px;
+  bottom: 236px;
+  transform: rotate(11deg);
+  animation-delay: 1.1s;
+}
+
 .moon {
   position: absolute;
   top: 42px;
@@ -561,9 +584,26 @@ p {
 }
 
 .glass-card {
+  position: relative;
   min-height: 260px;
+  overflow: hidden;
   padding: 30px;
   border-radius: 34px;
+}
+
+.twinkle-card::after {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, white 0 8%, transparent 9%),
+    conic-gradient(from 45deg, transparent 0 18%, rgba(255, 143, 184, 0.8) 19% 24%, transparent 25% 43%, rgba(217, 199, 255, 0.8) 44% 49%, transparent 50%);
+  opacity: 0.72;
+  animation: spinSparkle 5s linear infinite;
 }
 
 .card-icon {
@@ -577,6 +617,105 @@ p {
   font-weight: 900;
   background: linear-gradient(135deg, var(--rose), var(--lavender));
   box-shadow: 0 14px 26px rgba(255, 143, 184, 0.28);
+}
+
+.gallery-section {
+  max-width: 1220px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.picture-frame {
+  position: relative;
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  gap: 22px;
+  padding: 16px 16px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.picture-frame::before {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 74px;
+  height: 28px;
+  content: "";
+  border-radius: 999px;
+  background: rgba(255, 210, 227, 0.86);
+  box-shadow: 0 10px 24px rgba(149, 86, 125, 0.14);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.picture-frame:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.02);
+  box-shadow: var(--shadow);
+}
+
+.picture-frame img {
+  width: 100%;
+  aspect-ratio: 1.08;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.picture-frame span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #bb5f8a;
+  font-weight: 900;
+}
+
+.picture-frame h3 {
+  margin-bottom: 8px;
+}
+
+.picture-frame p {
+  margin: 0;
+}
+
+.tilt-left {
+  transform: rotate(-2deg);
+}
+
+.tilt-right {
+  transform: rotate(2deg);
+}
+
+.postcard-section {
+  padding-top: 34px;
+}
+
+.postcard-card {
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 62px);
+  padding: clamp(18px, 4vw, 34px);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 44px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 210, 227, 0.72), transparent 18rem),
+    rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.postcard-card img {
+  width: 100%;
+  border-radius: 34px;
+  box-shadow: var(--soft-shadow);
+  animation: postcardSway 6s ease-in-out infinite;
 }
 
 .split-section {
@@ -867,6 +1006,17 @@ p {
   font-weight: 800;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes bob {
   0%,
   100% {
@@ -883,6 +1033,32 @@ p {
   }
   to {
     transform: rotate(12deg);
+  }
+}
+
+@keyframes floatSticker {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@keyframes spinSparkle {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes postcardSway {
+  0%,
+  100% {
+    transform: rotate(-1deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1.5deg) translateY(-8px);
   }
 }
 
@@ -908,7 +1084,8 @@ p {
 
 @media (max-width: 980px) {
   .hero-content,
-  .split-section {
+  .split-section,
+  .postcard-card {
     grid-template-columns: 1fr;
   }
 
@@ -917,8 +1094,13 @@ p {
   }
 
   .intro-grid,
-  .eras-grid {
+  .eras-grid,
+  .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .picture-frame {
+    min-height: auto;
   }
 }
 
@@ -951,6 +1133,21 @@ p {
     border-radius: 32px;
   }
 
+  .floating-picture {
+    width: 86px;
+    border-radius: 22px;
+  }
+
+  .picture-medicine {
+    top: 138px;
+    left: 18px;
+  }
+
+  .picture-music {
+    right: 18px;
+    bottom: 210px;
+  }
+
   .sheep {
     left: 20px;
     transform: scale(0.82);
@@ -965,8 +1162,13 @@ p {
 
   .intro-grid,
   .friends-grid,
+  .gallery-grid,
   .eras-grid {
     grid-template-columns: 1fr;
+  }
+
+  .postcard-card {
+    border-radius: 32px;
   }
 
   .section {

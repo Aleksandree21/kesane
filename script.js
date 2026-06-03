@@ -2,6 +2,7 @@ const sparkleField = document.querySelector(".sparkle-field");
 const confettiButton = document.querySelector("#confettiButton");
 const noteButton = document.querySelector("#noteButton");
 const loveNote = document.querySelector("#loveNote");
+const revealElements = document.querySelectorAll(".reveal");
 
 const notes = [
   "Kesane, you are the kind of person who makes ordinary moments feel like they are wrapped in ribbon.",
@@ -13,6 +14,8 @@ const notes = [
   "Your study era is cute, brave, and absolutely worth cheering for.",
   "Kesane, you are sweeter than a tiny sheep taking a nap under pink clouds."
 ];
+
+const floatingSymbols = ["&#9825;", "&#10022;", "&#8902;", "&#8728;"];
 
 function randomBetween(min, max) {
   return Math.random() * (max - min) + min;
@@ -35,10 +38,11 @@ function createSparkles() {
 function launchHeart(x, y) {
   const heart = document.createElement("span");
   heart.className = "floating-heart";
-  heart.innerHTML = "&#9825;";
+  heart.innerHTML = floatingSymbols[Math.floor(Math.random() * floatingSymbols.length)];
   heart.style.left = `${x}px`;
   heart.style.top = `${y}px`;
   heart.style.fontSize = `${randomBetween(18, 34)}px`;
+  heart.style.color = Math.random() > 0.5 ? "#ff8fb8" : "#c291ff";
   document.body.appendChild(heart);
 
   window.setTimeout(() => {
@@ -85,7 +89,29 @@ function showNextNote() {
   };
 }
 
+function revealOnScroll() {
+  if (!("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16 }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+}
+
 createSparkles();
+revealOnScroll();
 
 confettiButton?.addEventListener("click", burstHearts);
 noteButton?.addEventListener("click", () => {
