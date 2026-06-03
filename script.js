@@ -20,7 +20,25 @@ const notes = [
 ];
 
 const floatingSymbols = ["&#9825;", "&#10022;", "&#8902;", "&#8728;"];
-const storedTheme = window.localStorage.getItem("kesane-theme");
+const storageKey = "kesane-theme";
+
+function getStoredTheme() {
+  try {
+    return window.localStorage.getItem(storageKey);
+  } catch {
+    return null;
+  }
+}
+
+function storeTheme(theme) {
+  try {
+    window.localStorage.setItem(storageKey, theme);
+  } catch {
+    // The toggle should still work if browser privacy settings block storage.
+  }
+}
+
+const storedTheme = getStoredTheme();
 
 function randomBetween(min, max) {
   return Math.random() * (max - min) + min;
@@ -33,17 +51,24 @@ function setTheme(isDark, shouldScroll = false) {
     "aria-label",
     isDark ? "Switch to light day mode" : "Switch to dark moon mode"
   );
-  window.localStorage.setItem("kesane-theme", isDark ? "dark" : "light");
+  if (heroThemeButton) {
+    heroThemeButton.textContent = isDark ? "Sunrise mode" : "Moonlight mode";
+  }
+  storeTheme(isDark ? "dark" : "light");
+
+  if (isDark && moonlightSection) {
+    moonlightSection.classList.add("is-visible");
+  }
 
   if (isDark && shouldScroll && moonlightSection) {
-    moonlightSection.classList.add("is-visible");
     window.setTimeout(() => {
       moonlightSection.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 180);
   }
 }
 
-function toggleTheme() {
+function toggleTheme(event) {
+  event?.preventDefault();
   setTheme(!document.body.classList.contains("dark-theme"), true);
 }
 
@@ -166,8 +191,6 @@ createSparkles();
 revealOnScroll();
 
 confettiButton?.addEventListener("click", burstHearts);
-themeToggle?.addEventListener("click", toggleTheme);
-heroThemeButton?.addEventListener("click", toggleTheme);
 sparkleSoundButton?.addEventListener("click", () => {
   playSparkleSound();
   burstHearts();
@@ -178,6 +201,11 @@ noteButton?.addEventListener("click", () => {
 });
 
 document.addEventListener("click", (event) => {
+  if (event.target.closest("#themeToggle, #heroThemeButton")) {
+    toggleTheme(event);
+    return;
+  }
+
   const isButton = event.target.closest("button, a");
   if (!isButton && Math.random() > 0.55) {
     launchHeart(event.clientX, event.clientY);

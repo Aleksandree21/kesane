@@ -1126,6 +1126,8 @@ body.dark-theme .moon {
 
 body.dark-theme .moonlight-section {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .moonlight-card {
