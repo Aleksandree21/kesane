@@ -1,0 +1,36 @@
+<svg width="520" height="420" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="420" rx="52" fill="#FFF8EF"/>
+  <circle cx="92" cy="86" r="46" fill="#FFD2E3"/>
+  <circle cx="430" cy="318" r="56" fill="#C9F4DE"/>
+  <g filter="url(#shadow)">
+    <path d="M260 55L334 98V183L260 226L186 183V98L260 55Z" fill="#F7D27B"/>
+    <path d="M186 183L260 226V311L186 354L112 311V226L186 183Z" fill="#8CCF8B"/>
+    <path d="M334 183L408 226V311L334 354L260 311V226L334 183Z" fill="#E9A35F"/>
+    <path d="M112 98L186 55L260 98V183L186 226L112 183V98Z" fill="#9ED7F7"/>
+    <path d="M260 98L334 55L408 98V183L334 226L260 183V98Z" fill="#D9C7FF"/>
+    <path d="M186 226L260 183L334 226V311L260 354L186 311V226Z" fill="#B8E08D"/>
+    <path d="M260 55L334 98V183L260 226L186 183V98L260 55Z" stroke="white" stroke-width="9"/>
+    <path d="M186 183L260 226V311L186 354L112 311V226L186 183Z" stroke="white" stroke-width="9"/>
+    <path d="M334 183L408 226V311L334 354L260 311V226L334 183Z" stroke="white" stroke-width="9"/>
+    <path d="M112 98L186 55L260 98V183L186 226L112 183V98Z" stroke="white" stroke-width="9"/>
+    <path d="M260 98L334 55L408 98V183L334 226L260 183V98Z" stroke="white" stroke-width="9"/>
+    <path d="M186 226L260 183L334 226V311L260 354L186 311V226Z" stroke="white" stroke-width="9"/>
+    <circle cx="260" cy="142" r="23" fill="white"/>
+    <circle cx="186" cy="268" r="23" fill="white"/>
+    <circle cx="334" cy="268" r="23" fill="white"/>
+    <text x="249" y="151" fill="#51374D" font-family="Nunito, Arial, sans-serif" font-weight="800" font-size="25">8</text>
+    <text x="174" y="277" fill="#51374D" font-family="Nunito, Arial, sans-serif" font-weight="800" font-size="25">6</text>
+    <text x="321" y="277" fill="#51374D" font-family="Nunito, Arial, sans-serif" font-weight="800" font-size="25">9</text>
+  </g>
+  <path d="M92 294H156" stroke="#C85C5C" stroke-width="14" stroke-linecap="round"/>
+  <path d="M392 120H456" stroke="#C85C5C" stroke-width="14" stroke-linecap="round"/>
+  <path d="M104 290L128 249L152 290H104Z" fill="#C85C5C"/>
+  <path d="M398 116L422 75L446 116H398Z" fill="#C85C5C"/>
+  <path d="M92 72L104 99L133 102L111 121L117 150L92 135L67 150L73 121L51 102L80 99L92 72Z" fill="#FF8FB8"/>
+  <text x="126" y="386" fill="#51374D" font-family="Georgia, serif" font-size="28">Catan queen of strategy</text>
+  <defs>
+    <filter id="shadow" x="78" y="35" width="364" height="353" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="16" flood-color="#95567D" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+</svg>

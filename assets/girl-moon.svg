@@ -1,0 +1,30 @@
+<svg width="520" height="420" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="420" rx="52" fill="#101A3A"/>
+  <circle cx="400" cy="92" r="64" fill="#FFF4B8"/>
+  <circle cx="374" cy="74" r="64" fill="#101A3A"/>
+  <path d="M87 322C139 248 231 218 310 249C374 274 416 321 443 390H70C70 364 76 341 87 322Z" fill="#1F315D"/>
+  <g opacity=".85">
+    <circle cx="88" cy="78" r="3" fill="#FDF7D7"/>
+    <circle cx="152" cy="48" r="2.5" fill="#FDF7D7"/>
+    <circle cx="230" cy="90" r="3" fill="#FDF7D7"/>
+    <circle cx="312" cy="42" r="2" fill="#FDF7D7"/>
+    <circle cx="462" cy="182" r="3" fill="#FDF7D7"/>
+    <circle cx="394" cy="220" r="2" fill="#FDF7D7"/>
+    <circle cx="118" cy="176" r="2" fill="#FDF7D7"/>
+  </g>
+  <path d="M152 190C175 155 218 153 244 186C270 219 265 270 224 292C183 313 130 267 152 190Z" fill="#382447"/>
+  <circle cx="204" cy="170" r="42" fill="#FFD3C7"/>
+  <path d="M156 169C174 123 225 114 252 154C231 146 206 143 179 160C171 166 164 170 156 169Z" fill="#382447"/>
+  <path d="M187 174C191 177 197 177 201 174" stroke="#4E3A3A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M220 174C224 177 230 177 234 174" stroke="#4E3A3A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M199 196C209 204 222 203 232 195" stroke="#FF8FB8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M164 281C181 237 235 236 254 281L278 390H134L164 281Z" fill="#D9C7FF"/>
+  <path d="M178 257C204 285 230 284 251 257" stroke="#FFF8EF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M270 253C306 226 336 188 361 139" stroke="#FFD3C7" stroke-width="17" stroke-linecap="round"/>
+  <path d="M361 139C372 128 383 126 393 135" stroke="#FFD3C7" stroke-width="13" stroke-linecap="round"/>
+  <path d="M364 143C380 144 392 151 399 164" stroke="#FFD3C7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M141 388C154 355 262 355 276 388H141Z" fill="#C291FF"/>
+  <path d="M350 132C365 114 382 115 392 132" stroke="#FFF4B8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M342 157C365 138 394 140 410 162" stroke="#FFF4B8" stroke-width="5" stroke-linecap="round"/>
+  <text x="78" y="366" fill="#FFF8EF" font-family="Georgia, serif" font-size="24">Kesane whispers dreams to the moon</text>
+</svg>

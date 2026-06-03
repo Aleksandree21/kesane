@@ -31,6 +31,19 @@ body {
     radial-gradient(circle at 85% 12%, rgba(191, 233, 255, 0.8), transparent 32rem),
     linear-gradient(135deg, #fff8ef 0%, #fff0f7 48%, #f5efff 100%);
   overflow-x: hidden;
+  transition: background 420ms ease, color 420ms ease;
+}
+
+body.dark-theme {
+  --ink: #fff8ef;
+  --muted: #d9c7ff;
+  --white: #16204a;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  --soft-shadow: 0 18px 48px rgba(0, 0, 0, 0.26);
+  background:
+    radial-gradient(circle at 72% 8%, rgba(255, 244, 184, 0.22), transparent 24rem),
+    radial-gradient(circle at 18% 20%, rgba(194, 145, 255, 0.22), transparent 30rem),
+    linear-gradient(135deg, #0b1028 0%, #151d42 52%, #271a44 100%);
 }
 
 body::before {
@@ -44,6 +57,12 @@ body::before {
     radial-gradient(circle, rgba(217, 199, 255, 0.28) 0 2px, transparent 3px);
   background-position: 0 0, 34px 42px;
   background-size: 86px 86px;
+}
+
+body.dark-theme::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 248, 239, 0.45) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(217, 199, 255, 0.38) 0 2px, transparent 3px);
 }
 
 a {
@@ -109,6 +128,21 @@ a {
   backdrop-filter: blur(18px);
 }
 
+body.dark-theme .nav,
+body.dark-theme .glass-card,
+body.dark-theme .friend-card,
+body.dark-theme .era-card,
+body.dark-theme .love-note-card,
+body.dark-theme .notebook-card,
+body.dark-theme .picture-frame,
+body.dark-theme .postcard-card,
+body.dark-theme .music-card,
+body.dark-theme .catan-card,
+body.dark-theme .moonlight-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(17, 26, 62, 0.72);
+}
+
 .logo {
   display: inline-flex;
   align-items: center;
@@ -149,6 +183,53 @@ a {
   color: var(--ink);
   background: rgba(255, 210, 227, 0.72);
   transform: translateY(-1px);
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 118px;
+  padding: 8px;
+  border: 0;
+  border-radius: 999px;
+  color: #7a5572;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--soft-shadow);
+  cursor: pointer;
+}
+
+.theme-toggle::before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(50% - 6px);
+  height: calc(100% - 12px);
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff1b8, #ffb8d2);
+  transition: transform 240ms ease;
+}
+
+.theme-toggle span {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+}
+
+body.dark-theme .theme-toggle {
+  color: #fff8ef;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-theme .theme-toggle::before {
+  background: linear-gradient(135deg, #8e79ff, #fff4b8);
+  transform: translateX(100%);
 }
 
 .hero-content {
@@ -241,6 +322,10 @@ p {
   box-shadow: var(--soft-shadow);
 }
 
+body.dark-theme .button.secondary {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .hero-card {
   position: relative;
   min-height: 560px;
@@ -253,6 +338,13 @@ p {
   box-shadow: var(--shadow);
 }
 
+body.dark-theme .hero-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(20, 32, 75, 0.92), rgba(46, 29, 76, 0.94)),
+    rgba(255, 255, 255, 0.05);
+}
+
 .hero-card::before {
   position: absolute;
   inset: auto -20% -18% -20%;
@@ -260,6 +352,10 @@ p {
   content: "";
   border-radius: 50% 50% 0 0;
   background: linear-gradient(180deg, #d8f8df, #b9efce);
+}
+
+body.dark-theme .hero-card::before {
+  background: linear-gradient(180deg, #243866, #18284e);
 }
 
 .hero-card-note {
@@ -310,6 +406,11 @@ p {
   border-radius: 50%;
   background: #fff7c9;
   box-shadow: 0 0 44px rgba(255, 247, 201, 0.9);
+}
+
+body.dark-theme .moon {
+  background: #fff4b8;
+  box-shadow: 0 0 72px rgba(255, 244, 184, 0.92);
 }
 
 .cloud {
@@ -948,6 +1049,105 @@ p {
   background: linear-gradient(145deg, #d6f1ff, #f8fdff);
 }
 
+.music-section,
+.catan-section {
+  max-width: 1220px;
+}
+
+.music-card,
+.catan-card,
+.moonlight-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
+  align-items: center;
+  gap: clamp(26px, 5vw, 62px);
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 44px;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255, 210, 227, 0.7), transparent 18rem),
+    rgba(255, 255, 255, 0.64);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.music-card {
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+}
+
+.music-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.spotify-player {
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 28px;
+  box-shadow: var(--soft-shadow);
+}
+
+.catan-card {
+  grid-template-columns: minmax(280px, 440px) minmax(0, 1fr);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(201, 244, 222, 0.7), transparent 17rem),
+    rgba(255, 255, 255, 0.64);
+}
+
+.catan-card img,
+.moonlight-card img {
+  width: 100%;
+  border-radius: 34px;
+  box-shadow: var(--soft-shadow);
+}
+
+.catan-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.catan-stats span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #7c4e36;
+  font-weight: 900;
+  background: rgba(255, 215, 181, 0.8);
+}
+
+.moonlight-section {
+  display: none;
+  max-width: 1220px;
+}
+
+body.dark-theme .moonlight-section {
+  display: block;
+}
+
+.moonlight-card {
+  grid-template-columns: minmax(300px, 500px) minmax(0, 1fr);
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 244, 184, 0.18), transparent 18rem),
+    rgba(17, 26, 62, 0.72);
+}
+
+body.dark-theme .era-card.pink,
+body.dark-theme .era-card.gold,
+body.dark-theme .era-card.lavender,
+body.dark-theme .era-card.blue {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+body.dark-theme .catan-stats span,
+body.dark-theme .study-badges span {
+  color: #fff8ef;
+  background: rgba(255, 255, 255, 0.13);
+}
+
 .love-note-section {
   padding-bottom: 110px;
 }
@@ -1085,7 +1285,10 @@ p {
 @media (max-width: 980px) {
   .hero-content,
   .split-section,
-  .postcard-card {
+  .postcard-card,
+  .music-card,
+  .catan-card,
+  .moonlight-card {
     grid-template-columns: 1fr;
   }
 
@@ -1169,6 +1372,16 @@ p {
 
   .postcard-card {
     border-radius: 32px;
+  }
+
+  .music-card,
+  .catan-card,
+  .moonlight-card {
+    border-radius: 32px;
+  }
+
+  .spotify-player {
+    min-height: 420px;
   }
 
   .section {

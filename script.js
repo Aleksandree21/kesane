@@ -2,7 +2,11 @@ const sparkleField = document.querySelector(".sparkle-field");
 const confettiButton = document.querySelector("#confettiButton");
 const noteButton = document.querySelector("#noteButton");
 const loveNote = document.querySelector("#loveNote");
+const themeToggle = document.querySelector("#themeToggle");
+const heroThemeButton = document.querySelector("#heroThemeButton");
+const sparkleSoundButton = document.querySelector("#sparkleSoundButton");
 const revealElements = document.querySelectorAll(".reveal");
+const moonlightSection = document.querySelector(".moonlight-section");
 
 const notes = [
   "Kesane, you are the kind of person who makes ordinary moments feel like they are wrapped in ribbon.",
@@ -16,9 +20,31 @@ const notes = [
 ];
 
 const floatingSymbols = ["&#9825;", "&#10022;", "&#8902;", "&#8728;"];
+const storedTheme = window.localStorage.getItem("kesane-theme");
 
 function randomBetween(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function setTheme(isDark, shouldScroll = false) {
+  document.body.classList.toggle("dark-theme", isDark);
+  themeToggle?.setAttribute("aria-pressed", String(isDark));
+  themeToggle?.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light day mode" : "Switch to dark moon mode"
+  );
+  window.localStorage.setItem("kesane-theme", isDark ? "dark" : "light");
+
+  if (isDark && shouldScroll && moonlightSection) {
+    moonlightSection.classList.add("is-visible");
+    window.setTimeout(() => {
+      moonlightSection.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 180);
+  }
+}
+
+function toggleTheme() {
+  setTheme(!document.body.classList.contains("dark-theme"), true);
 }
 
 function createSparkles() {
@@ -89,6 +115,31 @@ function showNextNote() {
   };
 }
 
+function playSparkleSound() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+
+  const audioContext = new AudioContext();
+  const notesToPlay = [659.25, 783.99, 987.77, 1318.51];
+
+  notesToPlay.forEach((frequency, index) => {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const startTime = audioContext.currentTime + index * 0.11;
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(frequency, startTime);
+    gain.gain.setValueAtTime(0, startTime);
+    gain.gain.linearRampToValueAtTime(0.13, startTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.46);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.5);
+  });
+}
+
 function revealOnScroll() {
   if (!("IntersectionObserver" in window)) {
     revealElements.forEach((element) => element.classList.add("is-visible"));
@@ -110,10 +161,17 @@ function revealOnScroll() {
   revealElements.forEach((element) => observer.observe(element));
 }
 
+setTheme(storedTheme === "dark");
 createSparkles();
 revealOnScroll();
 
 confettiButton?.addEventListener("click", burstHearts);
+themeToggle?.addEventListener("click", toggleTheme);
+heroThemeButton?.addEventListener("click", toggleTheme);
+sparkleSoundButton?.addEventListener("click", () => {
+  playSparkleSound();
+  burstHearts();
+});
 noteButton?.addEventListener("click", () => {
   showNextNote();
   burstHearts();
