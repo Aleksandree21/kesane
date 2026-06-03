@@ -159,6 +159,7 @@ body.dark-theme .love-note-card,
 body.dark-theme .notebook-card,
 body.dark-theme .picture-frame,
 body.dark-theme .postcard-card,
+body.dark-theme .forbidden-card,
 body.dark-theme .music-card,
 body.dark-theme .catan-card,
 body.dark-theme .moonlight-card {
@@ -741,6 +742,88 @@ body.dark-theme .moon {
   font-weight: 900;
   background: linear-gradient(135deg, var(--rose), var(--lavender));
   box-shadow: 0 14px 26px rgba(255, 143, 184, 0.28);
+}
+
+.forbidden-words-section {
+  padding-top: 24px;
+}
+
+.forbidden-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  align-items: center;
+  gap: clamp(24px, 5vw, 58px);
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(255, 210, 227, 0.72), transparent 18rem),
+    rgba(255, 255, 255, 0.64);
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.forbidden-card::before {
+  position: absolute;
+  top: -52px;
+  right: -38px;
+  width: 160px;
+  height: 160px;
+  content: "";
+  border-radius: 50%;
+  background: rgba(255, 143, 184, 0.22);
+}
+
+.forbidden-jar {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 2px dashed rgba(255, 143, 184, 0.44);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.forbidden-jar::before {
+  display: inline-flex;
+  justify-content: center;
+  width: fit-content;
+  margin: -42px auto 4px;
+  padding: 9px 18px;
+  content: "no-no jar";
+  border-radius: 999px;
+  color: #bb5f8a;
+  font-weight: 900;
+  background: #fff8ef;
+  box-shadow: var(--soft-shadow);
+}
+
+.forbidden-jar span {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 18px;
+  color: #7a5572;
+  font-size: 1.08rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 210, 227, 0.86), rgba(217, 199, 255, 0.72));
+}
+
+body.dark-theme .forbidden-jar {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .forbidden-jar::before {
+  color: #fff8ef;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-theme .forbidden-jar span {
+  color: #fff8ef;
+  background: linear-gradient(135deg, rgba(255, 143, 184, 0.26), rgba(194, 145, 255, 0.24));
 }
 
 .gallery-section {
@@ -1330,6 +1413,7 @@ body.dark-theme .study-badges span {
   .hero-content,
   .split-section,
   .postcard-card,
+  .forbidden-card,
   .music-card,
   .catan-card,
   .moonlight-card {
@@ -1415,6 +1499,10 @@ body.dark-theme .study-badges span {
   }
 
   .postcard-card {
+    border-radius: 32px;
+  }
+
+  .forbidden-card {
     border-radius: 32px;
   }
 
