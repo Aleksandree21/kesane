@@ -115,6 +115,29 @@ function burstHearts() {
   }
 }
 
+function fullScreenSparkle() {
+  const overlay = document.createElement("div");
+  overlay.className = "sparkle-overlay";
+  document.body.appendChild(overlay);
+
+  for (let index = 0; index < 120; index += 1) {
+    const sparkle = document.createElement("span");
+    sparkle.className = "screen-sparkle";
+    sparkle.innerHTML = floatingSymbols[Math.floor(Math.random() * floatingSymbols.length)];
+    sparkle.style.left = `${randomBetween(2, 98)}vw`;
+    sparkle.style.top = `${randomBetween(4, 96)}vh`;
+    sparkle.style.fontSize = `${randomBetween(16, 42)}px`;
+    sparkle.style.color = Math.random() > 0.5 ? "#ff8fb8" : "#c291ff";
+    sparkle.style.animationDelay = `${randomBetween(0, 0.8)}s`;
+    sparkle.style.animationDuration = `${randomBetween(1.4, 2.4)}s`;
+    overlay.appendChild(sparkle);
+  }
+
+  window.setTimeout(() => {
+    overlay.remove();
+  }, 3200);
+}
+
 function showNextNote() {
   if (!loveNote) return;
 
@@ -190,7 +213,7 @@ setTheme(storedTheme === "dark");
 createSparkles();
 revealOnScroll();
 
-confettiButton?.addEventListener("click", burstHearts);
+confettiButton?.addEventListener("click", fullScreenSparkle);
 sparkleSoundButton?.addEventListener("click", () => {
   playSparkleSound();
   burstHearts();

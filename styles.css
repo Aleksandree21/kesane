@@ -108,6 +108,29 @@ a {
   animation: floatUp 1.7s ease-out forwards;
 }
 
+.sparkle-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.screen-sparkle {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  opacity: 0;
+  font-weight: 900;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 24px rgba(255, 143, 184, 0.7);
+  animation: screenSparklePop 1.9s ease-out forwards;
+}
+
 .hero {
   position: relative;
   padding: 24px clamp(18px, 4vw, 60px) 72px;
@@ -1281,6 +1304,25 @@ body.dark-theme .study-badges span {
   to {
     opacity: 0;
     transform: translateY(-110px) scale(1.5) rotate(12deg);
+  }
+}
+
+@keyframes screenSparklePop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.2) rotate(0deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.18) rotate(18deg);
+  }
+  72% {
+    opacity: 0.95;
+    transform: translate3d(0, -42px, 0) scale(0.9) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -92px, 0) scale(0.15) rotate(320deg);
   }
 }
 
