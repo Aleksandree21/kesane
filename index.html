@@ -23,8 +23,10 @@
         </a>
         <div class="nav-links" aria-label="Page sections">
           <a href="#medicine">Medicine</a>
+          <a href="#step-quiz">Step 1 Quiz</a>
           <a href="#gallery">Gallery</a>
           <a href="#tiny-friends">Tiny Friends</a>
+          <a href="#problem-game">Problem Game</a>
           <a href="#swiftie">Swiftie</a>
           <a href="#catan">Catan</a>
           <a href="#love-notes">Love Notes</a>
@@ -146,6 +148,46 @@
         </article>
       </section>
 
+      <section id="problem-game" class="section problem-game-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Mini game break</p>
+          <h2>Kesane vs. the Problems</h2>
+          <p>
+            Tap the problems before they pile up. Every solved problem gives
+            Kesane more brave future-doctor energy.
+          </p>
+        </div>
+
+        <article class="problem-game-card">
+          <div class="game-scoreboard" aria-label="Game stats">
+            <span>Score: <strong id="gameScore">0</strong></span>
+            <span>Time: <strong id="gameTimer">20</strong>s</span>
+            <span>Combo: <strong id="gameCombo">0</strong></span>
+          </div>
+
+          <div class="game-stage" id="gameStage" aria-label="Kesane problem game area">
+            <div class="game-kesane" aria-hidden="true">
+              <span class="game-kesane-hair"></span>
+              <span class="game-kesane-face"></span>
+              <span class="game-kesane-coat"></span>
+              <span class="game-stethoscope"></span>
+            </div>
+            <div class="game-safe-zone">
+              <span>Kesane</span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <p id="gameMessage" class="game-message" aria-live="polite">
+              Ready? Help Kesane defeat stress, exams, and sleepy lectures.
+            </p>
+            <button class="button primary" id="gameStartButton" type="button">
+              Start game
+            </button>
+          </div>
+        </article>
+      </section>
+
       <section id="gallery" class="section gallery-section reveal">
         <div class="section-heading">
           <p class="eyebrow">A pocket-sized picture book</p>
@@ -223,6 +265,76 @@
             <li>Daily reminder: you are doing beautifully.</li>
           </ul>
         </div>
+      </section>
+
+      <section id="step-quiz" class="section step-quiz-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Serious study mode</p>
+          <h2>Step 1 Quiz Trainer</h2>
+          <p>
+            A focused board-style quiz engine for high-yield review. The sample
+            set is original and the structure is ready for licensed questions.
+          </p>
+        </div>
+
+        <article class="step-quiz-card">
+          <div class="quiz-toolbar" aria-label="Quiz controls">
+            <label class="quiz-field">
+              <span>Category</span>
+              <select id="quizCategory"></select>
+            </label>
+            <label class="quiz-field">
+              <span>Mode</span>
+              <select id="quizMode">
+                <option value="mixed">Mixed practice</option>
+                <option value="missed">Review incorrect</option>
+              </select>
+            </label>
+            <button class="button primary" id="quizStartButton" type="button">
+              Start quiz
+            </button>
+            <button class="button secondary" id="quizResetButton" type="button">
+              Reset progress
+            </button>
+          </div>
+
+          <div class="quiz-dashboard" aria-label="Quiz progress">
+            <span>Question <strong id="quizProgress">0/0</strong></span>
+            <span>Score <strong id="quizScore">0%</strong></span>
+            <span>Time <strong id="quizClock">00:00</strong></span>
+            <span>Best <strong id="quizBest">0%</strong></span>
+          </div>
+
+          <div class="quiz-layout">
+            <div class="quiz-question-panel">
+              <div class="quiz-meta">
+                <span id="quizCategoryLabel">Category</span>
+                <span id="quizSourceLabel">Original sample</span>
+              </div>
+              <p id="quizQuestion" class="quiz-question">
+                Choose a category and start the quiz when you are ready.
+              </p>
+              <div id="quizChoices" class="quiz-choices" aria-live="polite"></div>
+            </div>
+
+            <aside class="quiz-explanation-panel" aria-live="polite">
+              <p class="eyebrow">Explanation</p>
+              <h3 id="quizResultTitle">Ready to begin</h3>
+              <p id="quizExplanation">
+                Answer a question to unlock the explanation and track missed
+                topics for review mode.
+              </p>
+              <div class="quiz-actions">
+                <button class="button primary" id="quizNextButton" type="button" disabled>
+                  Next question
+                </button>
+                <button class="button secondary" id="quizReviewButton" type="button">
+                  Review incorrect
+                </button>
+              </div>
+            </aside>
+          </div>
+        </article>
       </section>
 
       <section class="section postcard-section reveal">
@@ -401,6 +513,7 @@
       </p>
     </footer>
 
+    <script src="questions.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
