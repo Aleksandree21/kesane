@@ -45,6 +45,46 @@ const notes = [
 const floatingSymbols = ["&#9825;", "&#10022;", "&#8902;", "&#8728;"];
 const storageKey = "kesane-theme";
 const quizStorageKey = "kesane-step-quiz-progress";
+const fallbackQuizQuestions = [
+  {
+    id: "fallback-cardio-001",
+    category: "Cardiology",
+    question:
+      "A patient has substernal chest pain and ST elevations in II, III, and aVF. Which artery is most commonly involved?",
+    choices: [
+      "Left anterior descending artery",
+      "Right coronary artery",
+      "Left main coronary artery",
+      "Anterior interventricular artery"
+    ],
+    answerIndex: 1,
+    explanation:
+      "Inferior wall myocardial infarctions usually involve the right coronary artery in right-dominant circulation.",
+    source: "fallback original sample"
+  },
+  {
+    id: "fallback-micro-001",
+    category: "Microbiology",
+    question:
+      "A gray pharyngeal pseudomembrane and myocarditis are caused by a toxin that inhibits which factor?",
+    choices: ["Elongation factor 2", "DNA gyrase", "RNA polymerase", "Dihydrofolate reductase"],
+    answerIndex: 0,
+    explanation:
+      "Diphtheria toxin ADP-ribosylates elongation factor 2, blocking protein synthesis.",
+    source: "fallback original sample"
+  },
+  {
+    id: "fallback-pharm-001",
+    category: "Pharmacology",
+    question:
+      "Which medication should be avoided with nitroglycerin because it can cause severe hypotension?",
+    choices: ["Aspirin", "Sildenafil", "Atorvastatin", "Metoprolol"],
+    answerIndex: 1,
+    explanation:
+      "PDE-5 inhibitors such as sildenafil amplify nitrate-mediated cGMP signaling and can cause dangerous hypotension.",
+    source: "fallback original sample"
+  }
+];
 const problemLabels = [
   "Exam stress",
   "Sleepy lecture",
@@ -244,7 +284,11 @@ function playSparkleSound() {
 }
 
 function getQuizQuestions() {
-  return Array.isArray(window.stepOneQuestions) ? window.stepOneQuestions : [];
+  if (Array.isArray(window.stepOneQuestions) && window.stepOneQuestions.length) {
+    return window.stepOneQuestions;
+  }
+
+  return fallbackQuizQuestions;
 }
 
 function getStoredQuizProgress() {
@@ -418,6 +462,7 @@ function updateMissedQuestion(question, wasCorrect) {
     missedIds: [...missedIds]
   };
   storeQuizProgress(quizProgressState);
+  if (quizReviewButton) quizReviewButton.disabled = quizProgressState.missedIds.length === 0;
 }
 
 function handleQuizAnswer(selectedIndex) {
@@ -471,6 +516,7 @@ function endQuiz() {
 }
 
 function startQuiz() {
+  quizProgressState = getStoredQuizProgress();
   const selectedQuestions = getActiveQuestionPool();
   if (!selectedQuestions.length) {
     renderQuizEmptyState(
@@ -509,6 +555,8 @@ function showNextQuizQuestion() {
 function resetQuizProgress() {
   quizProgressState = { bestScore: 0, attempted: 0, missedIds: [] };
   storeQuizProgress(quizProgressState);
+  if (quizMode) quizMode.value = "mixed";
+  if (quizReviewButton) quizReviewButton.disabled = true;
   renderQuizEmptyState(
     "Progress reset. Start a fresh quiz when you are ready.",
     "Your best score and missed-question review list were cleared on this browser."
@@ -524,6 +572,8 @@ function initializeQuiz() {
   if (!quizCategory || !quizChoices) return;
 
   populateQuizCategories();
+  if (quizStartButton) quizStartButton.disabled = false;
+  if (quizReviewButton) quizReviewButton.disabled = quizProgressState.missedIds.length === 0;
   renderQuizEmptyState(
     "Choose a category and start the quiz when you are ready.",
     "Answer a question to unlock the explanation and track missed topics for review mode."

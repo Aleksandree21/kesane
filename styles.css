@@ -1254,6 +1254,7 @@ body.dark-theme .forbidden-jar span {
   content: "";
   border-radius: 50%;
   background: rgba(255, 143, 184, 0.18);
+  pointer-events: none;
 }
 
 .quiz-toolbar,
@@ -1285,6 +1286,8 @@ body.dark-theme .forbidden-jar span {
 }
 
 .quiz-field select {
+  position: relative;
+  z-index: 2;
   width: 100%;
   min-height: 50px;
   padding: 0 16px;
@@ -1295,6 +1298,7 @@ body.dark-theme .forbidden-jar span {
   font-weight: 800;
   background: rgba(255, 255, 255, 0.74);
   box-shadow: var(--soft-shadow);
+  cursor: pointer;
 }
 
 body.dark-theme .quiz-field select {
@@ -1499,6 +1503,7 @@ body.dark-theme .quiz-choice.is-incorrect {
   content: "";
   border-radius: 50%;
   background: rgba(201, 244, 222, 0.54);
+  pointer-events: none;
 }
 
 .game-scoreboard,
@@ -1938,10 +1943,20 @@ body.dark-theme .study-badges span {
   }
 
   .nav-links {
+    width: 100%;
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-links a {
+    flex: 0 0 auto;
     padding: 8px 10px;
     font-size: 0.85rem;
   }
@@ -2004,14 +2019,84 @@ body.dark-theme .study-badges span {
     border-radius: 32px;
   }
 
-  .quiz-toolbar,
-  .quiz-dashboard {
+  .step-quiz-card {
+    padding: 16px;
+  }
+
+  .quiz-toolbar {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .quiz-toolbar .button {
+    width: 100%;
+  }
+
+  .quiz-field select {
+    min-height: 54px;
+    font-size: 1rem;
+  }
+
+  .quiz-dashboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .quiz-dashboard span {
+    min-height: 62px;
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .quiz-dashboard strong {
+    font-size: 1.12rem;
   }
 
   .quiz-question-panel,
   .quiz-explanation-panel {
+    padding: 18px;
     border-radius: 24px;
+  }
+
+  .quiz-meta {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-meta span {
+    padding: 7px 10px;
+    font-size: 0.76rem;
+  }
+
+  .quiz-question {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .quiz-choices {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .quiz-choice {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 10px;
+    padding: 13px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+  }
+
+  .quiz-choice-letter {
+    width: 28px;
+    height: 28px;
+  }
+
+  .quiz-actions {
+    margin-top: 18px;
+  }
+
+  .quiz-actions .button {
+    width: 100%;
   }
 
   .spotify-player {
